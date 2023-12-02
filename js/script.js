@@ -55,10 +55,12 @@ createApp({
             }
             this.activeIndex = index;
         },
+
         nextSlide(){
             this.activeIndex ++;
             if (this.activeIndex >= this.slides.lenght){
                 this.activeIndex = 0;
+                
             }
 
 
@@ -67,9 +69,10 @@ createApp({
 
         prevSlide(){
             this.activeIndex --;
-            if (this.activeIndex >= this.slides.lenght){
-                this.activeIndex = slides.lenght;
+            if (this.activeIndex < 0){
+                this.activeIndex = slides.lenght - 1 ;
             }
+            
         },
     }
 }).mount('#app')
