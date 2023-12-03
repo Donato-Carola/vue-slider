@@ -7,90 +7,65 @@ Bonus:
 2- applicare l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
 3- quando il mouse va in hover sullo slider, bloccare l'autoplay e farlo riprendere quando esce*/
 
-
-const {createApp} = Vue
+const { createApp } = Vue;
 
 createApp({
-    data(){
-      return { 
+  data() {
+    return {
+      activeIndex: 0,
 
-       activeIndex : 0,
-
-        slides : [
+      slides: [
         {
-            image: 'img/01.webp',
-                title: 'Marvel\'s Spiderman Miles Morale',
-                text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
-            }, 
-            {
-                image: 'img/02.webp',
-                title: 'Ratchet & Clank: Rift Apart',
-                text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
-            }, 
-            {
-                image: 'img/03.webp',
-                title: 'Fortnite',
-                text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
-            }, 
-            {
-                image: 'img/04.webp',
-                title: 'Stray',
-                text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
-            }, 
-            {
-                image: 'img/05.webp',
-                title: "Marvel's Avengers",
-                text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
-            }
-        ],
-
-     
-    }
-     
+          image: "img/01.webp",
+          title: "Marvel's Spiderman Miles Morale",
+          text: "Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.",
+        },
+        {
+          image: "img/02.webp",
+          title: "Ratchet & Clank: Rift Apart",
+          text: "Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.",
+        },
+        {
+          image: "img/03.webp",
+          title: "Fortnite",
+          text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+        },
+        {
+          image: "img/04.webp",
+          title: "Stray",
+          text: "Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city",
+        },
+        {
+          image: "img/05.webp",
+          title: "Marvel's Avengers",
+          text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
+        },
+      ],
+    };
+  },
+  methods: {
+    changeSlideTo(index) {
+      if (index >= this.slides.length || index < 0) {
+        return false;
+      }
+      this.activeIndex = index;
     },
-    methods:{
-        changeSlideTo(index){
-            if(index >= this.slides.length || index < 0){
-                return false;
-            }
-            this.activeIndex = index;
-        },
 
-        nextSlide(){
-            this.activeIndex ++;
-            if (this.activeIndex >= this.slides.lenght){
-                this.activeIndex = 0;
-                
-            }
+    nextSlide() {
+      this.activeIndex++;
+      if (this.activeIndex >= this.slides.length) {
+        this.activeIndex = 0;
+      }
+    },
 
-
-            
-        },
-
-        prevSlide(){
-            this.activeIndex --;
-            if (this.activeIndex < 0){
-                this.activeIndex = slides.lenght - 1 ;
-            }
-            
-        },
-    }
-}).mount('#app')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    prevSlide() {
+      this.activeIndex--;
+      if (this.activeIndex < 0) {
+        this.activeIndex = this.slides.length - 1;
+      }
+    },
+  },
+}).mount("#app");
 
 
 
